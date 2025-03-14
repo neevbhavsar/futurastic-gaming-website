@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xenesis Event</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Venite+Adoremus+Straight&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        /* Popup styles */
+        .imagepopup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 1);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .imagepopup img {
+            max-width: 90%;
+            max-height: 90%;
+            animation: fadeIn 0.5s;
+        }
+        .imageclose-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-popup" id="welcomePopup">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h1 class="text-center">Welcome to X-Mock SuperAgent</h1>
+        <p class="text-center">"Welcome to X-Mock SuperAgent, your ultimate destination for epic adventures, thrilling battles, and non-stop entertainment! Dive into the world of gaming and unleash your inner champion today!"</p>
+    </div>
+    <nav class="navbar flex items-center justify-between p-4">
+        <div class="logo w-12 h-12">
+            <img src="../images/detactive.jpeg" alt="Company Logo" class="w-full h-full object-cover">
+        </div>
+        <div class="menu-toggle text-white" onclick="toggleMenu(this)">☰</div>
+        <ul class="flex space-x-8 text-white hidden md:flex"> <!-- Hide on mobile -->
+            <li><a href="#">Home</a></li>
+            <li><a href="html/about-us.html">About Us</a></li>
+            <li><a href="html/service.html">Team members</a></li>
+            <li><a href="html/image-gallary.html">Image Gallery</a></li>
+            <li><a href="html/contactus.html">Contact Us</a></li>
+            <!-- <li><a href="login.html">Login us</a></li> -->
+        </ul>
+        <i class="fas fa-user-circle text-white icon"></i>
+    </nav>
+
+    <!-- <div class="welcome-popup" id="welcomePopup">
+        <button class="close-btn" onclick="closePopup()">✖</button>
+        <h1 class="text-center">Welcome to Callisto Gaming!</h1>
+        <p class="text-center">"Welcome to Callisto Gaming, your ultimate destination for epic adventures, thrilling battles, and non-stop entertainment! Dive into the world of gaming and unleash your inner champion today!"</p>
+    </div> -->
+
+    <section class="landing-section">
+        <div class="main">
+            <div class="left">
+                <div class="block-div block-div1">
+                    <h1 class="text-white text-3xl font-bold">Welcome to X-Mock SuperAgent</h1>
+                    <p class="text-white mt-2" style="font-family: Arial, Helvetica, sans-serif;text-align: center;">"Welcome to X-Mock SuperAgent, your ultimate destination for epic adventures, thrilling battles, and non-stop entertainment! Dive into the world of gaming and unleash your inner champion today!"</p>
+                    <a class="mt-4 bg-blue-500 text-white py-2 px-4 rounded" href="https://www.google.com">Click Here</a>
+                </div>
+                <div class="block-div block-div2">
+                    <div class="slider-container">
+                        <h2 class="slider-title text-center">Round Details</h2>
+                        <div class="nav-buttons">
+                          <button id="prev">❮</button>
+                          <button id="next">❯</button>
+                        </div>
+                        <div class="slider">
+                          <div class="slide">
+                            <img src="quiz.jpg" style="object-fit: cover;" alt="Wookong">
+                            <h3>Round 1:<br>The High-Stakes Quiz</h3>
+                            <p style="margin: 0; line-height: 1.5;height: 90px; overflow-y: auto; width: fit-content;">
+                                The battle begins with a rapid-fire test of knowledge, logic, and quick thinking. Each team will face a series of challenging questions, covering a wide range of topics from history and science to riddles and lateral thinking. The pressure is on-each question comes with a strict 15-second time limit. Only those who can think on their feet will make it through. At the end of this round, the 10 highest-scoring teams will advance.
+                              </p>
+                            <button>Wookong</button>
+                          </div>
+                          <div class="slide">
+                            <img src="Puzzle.jpg" alt="Game Image">
+                            <h3>Round 2:<br>The Puzzle Showdown</h3>
+                            <p style="margin: 0; line-height: 1.5;height: 90px; overflow-y: auto; width: fit-content;">
+                                With only 10 teams remaining, the challenge intensifies. Now, it’s time for a high-pressure, mind-bending 2-minute puzzle that will test not only intelligence but also teamwork and problem-solving skills. Teams must crack codes, decipher cryptic messages, and solve intricate logic puzzles before time runs out. Only the best of the best will make the cut, as just 7 teams will move on to the next stage.                              
+                            </p>
+                            <button>Play Now</button>
+                          </div>
+                          <div class="slide">
+                            <img src="Huntthemen.jpg" alt="Game Image">
+                            <h3>Round 3:<br>Hunt The Men</h3>
+                            <p style="margin: 0; line-height: 1.5;height: 90px; overflow-y: auto; width: fit-content;">
+                                Now, the real test begins. The remaining 7 teams will enter a high-stakes 20-minute scavenger hunt, where they must follow a trail of clues, each one more perplexing than the last. The challenges will push teams to their limits, requiring keen observation, deductive reasoning, and lightning-fast decision-making. The competition will be fierce, but in the end, only 3 teams will emerge victorious, proving themselves as the ultimate masterminds of mystery and intelligence.
+                              </p>
+                            <button>Play Now</button>
+                          </div>
+                        
+                          <div class="slide">
+                            <img src="quiz.jpg" style="object-fit: cover;" alt="Wookong">
+                            <h3>Black Mith Wukong</h3>
+                            <p style="margin: 0; line-height: 1.5;height: 90px; overflow-y: auto; width: fit-content;">
+                                "An awe-inspiring depiction of Black Myth: Wukong, showcasing the legendary Monkey King amidst a vibrant, mythical battleground. The image captures the game's stunning detail, dynamic action, and epic storytelling."
+                                "An awe-inspiring depiction of Black Myth: Wukong, showcasing the legendary Monkey King amidst a vibrant, mythical battleground. The image captures the game's stunning detail, dynamic action, and epic storytelling."
+                                "An awe-inspiring depiction of Black Myth: Wukong, showcasing the legendary Monkey King amidst a vibrant, mythical battleground. The image captures the game's stunning detail, dynamic action, and epic storytelling."
+                              </p>
+                            <button>Wookong</button>
+                          </div>
+                          <div class="slide">
+                            <img src="Puzzle.jpg" alt="Game Image">
+                            <h3>Game Name 2</h3>
+                            <p style="margin: 0; line-height: 1.5;height: 90px; overflow-y: auto; width: fit-content;">
+                                "An awe-inspiring depiction of Black Myth: Wukong, showcasing the legendary Monkey King amidst a vibrant, mythical battleground. The image captures the game's stunning detail, dynamic action, and epic storytelling."
+                              </p>
+                            <button>Play Now</button>
+                          </div>
+                          <div class="slide">
+                            <img src="Huntthemen.jpg" alt="Game Image">
+                            <h3>Game Name 3</h3>
+                            <p style="margin: 0; line-height: 1.5;height: 90px; overflow-y: auto; width: fit-content;">
+                                "An awe-inspiring depiction of Black Myth: Wukong, showcasing the legendary Monkey King amidst a vibrant, mythical battleground. The image captures the game's stunning detail, dynamic action, and epic storytelling."
+                              </p>
+                            <button>Play Now</button>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <h2 class="slider-title text-center" style="margin-top: 50px;">Team Members</h2>
+                <div class="about">
+                    <div class="about-image">
+                        <img src="team.jpeg" alt="">
+                    </div>
+                    <div class="about-dis">
+                        <p>
+                            We are the team behind X-Mock SuperAgents, a thrilling event where intelligence, mystery, and teamwork collide! Our mission is to challenge sharp minds with puzzles, clues, and high-stakes problem-solving. <br> <br>
+
+                            With dedication and creativity, we have designed an experience that tests wit, logic, and collaboration. From mind-bending riddles to fast-paced challenges, every element is crafted to push participants to their limits. <br> <br>
+
+                            At XENESIS, we push boundaries, ignite curiosity, and create unforgettable experiences. Think you have what it takes? Join us and prove your skills! <br> <br>
+
+                            #TeamXenesis #XMockSuperAgents #ChallengeYourMind
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <section class="gaming-terms">
+        <div class="main2">
+            <div class="image-gallery">
+                <h2 class="slider-title text-center" style="margin-top: 20px;">Image Gallery</h2>
+                <div class="categories-container">
+                    <div class="categories">
+                        <div class="category" onclick="imageshowPopup('../images/1.jpeg')"><img src="../images/1.jpg" alt="Group Image"></div>
+                        <div class="category" onclick="imageshowPopup('../images/2.jpg')"><img src="../images/2.jpg" alt="Bhavsar Neev"></div>
+                        <div class="category" onclick="imageshowPopup('../images/3.jpg')"><img src="../images/3.jpg" alt="Dharm Patel"></div>
+                        <div class="category" onclick="imageshowPopup('../images/4.jpg')"><img src="../images/4.jpg" alt="X-Mock SuperAgent Team With Faculty"></div>
+                        <div class="category" onclick="imageshowPopup('../images/6.jpg')"><img src="../images/6.jpg" alt="X-Mock SuperAgent Team"></div>
+                        <div class="category" onclick="imageshowPopup('../images/7.jpg')"><img src="../images/7.jpg" alt="X-Mock SuperAgent"></div>
+                        <div class="category" onclick="imageshowPopup('../images/8.jpg')"><img src="../images/8.jpg" alt="Cart Board"></div>
+                        <div class="category" onclick="imageshowPopup('../images/9.jpg')"><img src="../images/9.jpg" alt="Xenesis"></div>
+                        <!-- Duplicate categories for infinite scroll -->
+                        <div class="category" onclick="imageshowPopup('../images/1.jpeg')"><img src="../images/1.jpg" alt="Group Image"></div>
+                        <div class="category" onclick="imageshowPopup('../images/2.jpg')"><img src="../images/2.jpg" alt="Bhavsar Neev"></div>
+                        <div class="category" onclick="imageshowPopup('../images/3.jpg')"><img src="../images/3.jpg" alt="Dharm Patel"></div>
+                        <div class="category" onclick="imageshowPopup('../images/4.jpg')"><img src="../images/4.jpg" alt="X-Mock SuperAgent Team With Faculty"></div>
+                        <div class="category" onclick="imageshowPopup('../images/6.jpg')"><img src="../images/6.jpg" alt="X-Mock SuperAgent Team"></div>
+                        <div class="category" onclick="imageshowPopup('../images/7.jpg')"><img src="../images/7.jpg" alt="X-Mock SuperAgent"></div>
+                        <div class="category" onclick="imageshowPopup('../images/8.jpg')"><img src="../images/8.jpg" alt="Cart Board"></div>
+                        <div class="category" onclick="imageshowPopup('../images/9.jpg')"><img src="../images/9.jpg" alt="Xenesis"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popup for full-screen image -->
+            <div class="imagepopup" id="imagePopup">
+                <button class="imageclose-btn" onclick="imageclosePopup()">✖</button>
+                <img id="popupImage" src="" alt="Full Screen Image">
+            </div>
+            <div class="service">
+                <h2 class="slider-title text-center" style="margin-top: 20px;">Our Member</h2>
+                <div class="slider-container">
+                    <div class="ser-nav-buttons">
+                        <button id="prev-service">❮</button>
+                        <button id="next-service">❯</button>
+                    </div>
+                    <div class="service-slider">
+                        <div class="service-slide" style="display: flex;">
+                            <!-- <img src="https://cdn.vectorstock.com/i/1000v/38/48/gamer-gaming-logo-vector-47133848.jpg" alt="Service Image"> -->
+                            <div>
+                                <h3>Team Leader</h3>
+                                <p>Name: Bhavsar Neev <br> Enrollment No: 23BECE30027 <br> Email: bhavsarneev09@gmail.com <br> Mobile Number: 9409179650</p>
+                            </div>
+                        </div>
+                        <div class="service-slide">
+                            <!-- <img src="https://cdn.vectorstock.com/i/1000v/38/48/gamer-gaming-logo-vector-47133848.jpg" alt="Service Image"> -->
+                            <div>
+                                <h3>Team Member 1</h3>
+                                <p>Name: Patel Dharm <br> Enrollment No: 23BECE30510 <br> Email: dharm.patel@gmail.com <br> Mobile Number: 7017737132</p>
+                            </div>
+                        </div>
+                        <div class="service-slide">
+                            <!-- <img src="https://cdn.vectorstock.com/i/1000v/38/48/gamer-gaming-logo-vector-47133848.jpg" alt="Service Image"> -->
+                            <div>
+                                <h3>Team Member 2</h3>
+                                <p>Name: Patel Nandiniben <br> Enrollment No: 24BECE30592 <br> Email: patelnandini2410@gmail.com <br> Mobile Number: 7862892699</p>
+                            </div>
+                        </div>
+                        <div class="service-slide">
+                            <!-- <img src="https://cdn.vectorstock.com/i/1000v/38/48/gamer-gaming-logo-vector-47133848.jpg" alt="Service Image"> -->
+                            <div>
+                                <h3>Team Member 3</h3>
+                                <p>Name: Prajapati Yash <br> Enrollment No: 23BEIT30174 <br> Email:yashprajapati5151@gmail.com <br> Mobile Number: 9662321188</p>
+                            </div>
+                        </div>
+                        <div class="service-slide">
+                            <!-- <img src="https://cdn.vectorstock.com/i/1000v/38/48/gamer-gaming-logo-vector-47133848.jpg" alt="Service Image"> -->
+                            <div>
+                                <h3>Team Member 4</h3>
+                                <p>Name: Solanki Twinkle <br> Enrollment No: 23BEIT30193 <br> Email:solankitwinkle688@gmail.com <br> Mobile Number: 9265124280</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <section class="contact-us" style="display: block;">
+        <div class="main3">
+            <div class="title">
+                <h2 class="slider-title text-center">Contact Us</h2>
+            </div>
+            <div class="content">
+                <div class="contact-left">
+                    <form action="" method="post">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                        <label for="number">Phone Number</label>
+                        <input type="number" name="number" id="number" required>
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" rows="2"></textarea>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                <div class="contact-right">
+      
+                </div>
+            </div>
+        </div>
+     </section>
+
+     <footer class="flex justify-between p-4 bg-gray-800 text-white" id="footer">
+        <div class="footer-left">
+            <h2>Our Address</h2>
+            <p>Ui Creation</p>
+            <p>Bhavsar Vas , Near Old Post Office , vadali - 383235</p>
+            <p>Mobile: +91 9409179650</p>
+            <p>Name: Bhavsar Neev</p>
+        </div>
+        <div class="footer-middle">
+            <h2>Nav Links</h2>
+            <ul class="flex flex-col" id="nav">
+                <li><a href="#" class="text-white">Home</a></li>
+                <li><a href="#" class="text-white">About Us</a></li>
+                <li><a href="#" class="text-white">Services</a></li>
+                <li><a href="#" class="text-white">Gallery</a></li>
+                <li><a href="#" class="text-white">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-right">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509123!2d144.9537353153163!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11f3b3%3A0x5045675218ceed0!2sMelbourne%20CBD%2C%20Melbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sus!4v1616161616161!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+     </footer>
+     <div class="text-center text-white p-4" id="copyright">
+        <p>&copy; 2023 Ui Creation. All rights reserved.</p>
+     </div>
+
+     <script>
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const prev = document.getElementById('prev');
+        const next = document.getElementById('next');
+      
+        let currentIndex = 0;
+      
+        prev.addEventListener('click', () => {
+          currentIndex = (currentIndex > 0) ? currentIndex - 1 : (slides.length - 5 + 1);
+          updateSliderPosition();
+        });
+      
+        next.addEventListener('click', () => {
+          currentIndex = (currentIndex < slides.length - 5) ? currentIndex + 1 : 0;
+          updateSliderPosition();
+        });
+      
+        function updateSliderPosition() {
+          slider.style.transform = `translateX(-${currentIndex * (slides[0].clientWidth + 20)}px)`;
+          slider.style.transition = 'transform 1s ease';
+        }
+
+        // Service Slider
+        const serviceSlides = document.querySelectorAll('.service-slide');
+        const prevService = document.getElementById('prev-service');
+        const nextService = document.getElementById('next-service');
+      
+        let currentServiceIndex = 0;
+      
+        // Show the first service slide initially
+        serviceSlides[currentServiceIndex].style.display = 'flex';
+      
+        prevService.addEventListener('click', () => {
+          serviceSlides[currentServiceIndex].style.display = 'none'; // Hide current slide
+          currentServiceIndex = (currentServiceIndex > 0) ? currentServiceIndex - 1 : (serviceSlides.length - 1);
+          serviceSlides[currentServiceIndex].style.display = 'flex'; // Show new slide
+        });
+      
+        nextService.addEventListener('click', () => {
+          serviceSlides[currentServiceIndex].style.display = 'none'; // Hide current slide
+          currentServiceIndex = (currentServiceIndex < serviceSlides.length - 1) ? currentServiceIndex + 1 : 0;
+          serviceSlides[currentServiceIndex].style.display = 'flex'; // Show new slide
+        });
+
+        function toggleMenu(element) {
+            const navbar = document.querySelector('.navbar');
+            const landingSection = document.querySelector('.landing-section');
+            navbar.classList.toggle('active');
+            if (navbar.classList.contains('active')) {
+                landingSection.style.marginTop = '300px'; // Adjust this value as needed
+                element.innerHTML = '✖'; // Change to close icon
+            } else {
+                landingSection.style.marginTop = '20px'; // Reset margin
+                element.innerHTML = '☰'; // Change back to menu icon
+            }
+        }
+
+        // Welcome Popup Logic
+        function showPopup() {
+            const popup = document.getElementById('welcomePopup');
+            popup.style.display = 'block'; // Show popup by default
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('welcomePopup');
+            popup.style.animation = 'fadeOut 0.5s forwards';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 20);
+        }
+
+        function imageshowPopup(imageSrc) {
+            const popup = document.getElementById('imagePopup');
+            const popupImage = document.getElementById('popupImage');
+            popupImage.src = imageSrc;
+            popup.style.display = 'flex';
+        }
+
+        function imageclosePopup() {
+            const popup = document.getElementById('imagePopup');
+            popup.style.display = 'none';
+        }
+
+        window.onload = showPopup;
+
+        // GSAP Scroll Animation
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray('.block-div1, .block-div2, .about, .image-gallery, .service').forEach((section) => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1
+            });
+        });
+      </script>
+</body>
+</html>
