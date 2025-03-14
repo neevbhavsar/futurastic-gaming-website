@@ -1,0 +1,268 @@
+body {
+    font-family: 'Venite Adoremus Straight', sans-serif;
+    background-color: #13182b;
+}
+.navbar {
+    margin-top: 10px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(62, 72, 87, 0.329);
+    border-radius: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(135deg, #775ca1  0%,  #271b39 100%);
+    border: solid white 0.1px;
+    animation: fadeIn 1s, slideDown 1.5s;
+}
+.logo {
+    border-radius: 50%;
+    overflow: hidden;
+}
+.icon {
+    font-size: 2.5rem;
+}
+.aboutus{
+    width: 98%;
+    height: 90vh;
+    margin: 20px auto;
+    background: linear-gradient(rgba(12, 4, 34, 0.751), rgba(0, 0, 0, 0.804)), url('https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/page/alienware/hero-learn-desktop.jpg?fmt=jpg&wid=2880&hei=1440');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    filter: drop-shadow(2px 2px 5px rgb(255, 255, 255,0.7));
+    animation: fadeIn 1s, slideLeft 1.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.706);
+    z-index: 1;
+    transition: margin-top 0.5s ease; /* Smooth transition for margin */
+}
+.about-content{
+    width: 90%;
+}
+.about-content h3{
+    text-align: center;
+    margin-top: 50px; 
+    font-size: 4rem;
+}
+.about-content p{
+    margin-top: 50px; 
+    line-height: 1.5;
+    height: 600px; 
+    overflow-y: auto;
+    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    padding-right: 20px; /* Added space between scroll thumb and content */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent; /* For Firefox */
+}
+.about-content p::-webkit-scrollbar {
+    width: 8px; /* Thinner scrollbar */
+}
+.about-content p::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3); /* Thinner and transparent */
+    border-radius: 10px; /* Rounded corners */
+}
+#footer{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    /* border-radius: 20px; */
+    background-color: black;
+    padding-top: 30px;
+}
+.footer-left{
+    margin-left: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.footer-left h2{
+    font-size: 25px;
+    font-family: 'Venite Adoremus Straight';
+    line-height: 40px;
+}
+.footer-left p{
+    line-height: 30px;
+}
+.footer-middle{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.footer-middle h2{
+    font-size: 25px;
+    font-family: 'Venite Adoremus Straight';
+    line-height: 40px;
+}
+.footer-middle p{
+    line-height: 30px;
+}
+.footer-right iframe{
+    border-radius: 20px;
+    width: 500px;
+    height: 200px;
+}
+#copyright{
+    background-color: black;
+}
+        
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideLeft {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+ /* Media Queries for Responsiveness */
+ @media (max-width: 768px) {
+    .navbar{
+        width: 96%;
+        border-radius: 20px;
+    }
+    .navbar ul {
+        display: none;
+    }
+    .fas{
+        display: none;
+    }
+    .navbar .menu-toggle {
+        display: block;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    .navbar.active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(62, 72, 87, 0.9);
+        width: 95%; /* Adjusted to match navbar width */
+        top: 100px;
+        z-index: 10;
+        padding: 10px 0; /* Added padding for better spacing */
+        border-radius: 30px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .navbar.active ul li {
+        padding: 10px; /* Added padding for each link */
+        text-align: left; /* Align all text to the left */
+        margin-left: 30px; /* Ensure no left margin for all links */
+    }
+}
+@media (min-width: 769px) {
+    .navbar .menu-toggle {
+        display: none; /* Hide menu icon on larger screens */
+    }
+}
+@media (max-width: 425px) {
+    .navbar ul {
+        display: none;
+    }
+    .navbar .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+    .navbar.active ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: rgba(62, 72, 87, 0.9);
+        width: 90%; /* Adjusted to match navbar width */
+        top: 90px;
+        border-radius: 30px;
+        left: 5%; /* Centered the menu */
+        z-index: 10;
+        padding: 10px 0; /* Added padding for better spacing */
+    }
+    .navbar.active ul li {
+        padding: 10px; /* Added padding for each link */
+        text-align: left; /* Align all text to the left */
+        margin-left: 30px; /* Ensure no left margin for all links */
+    }
+    .about-content h3{
+        font-size: 3rem;
+    }
+    .about-content p{
+        height: 400px;
+        padding-left: 10px;
+    }
+    #footer{
+        display: block;
+        height: auto;
+    }
+    .footer-left{
+        margin-left: 10px;
+        margin-bottom: 30px;
+    }
+    .footer-left h2{
+        font-size: 25px;
+        font-weight: bold;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .footer-left p{
+        font-size: 15px;
+    }
+    .footer-middle{
+        margin-left: 10px;
+        margin-bottom: 30px;
+    }
+    .footer-middle h2{
+        font-size: 25px;
+        font-weight: bold;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    .footer-middle a{
+        font-size: 15px;
+    }
+    .footer-right{
+        width: 100%;
+    }
+    .footer-right iframe{
+        width: 100%;
+    }
+    #copyright{
+        padding-bottom: 30px;
+    }
+}
